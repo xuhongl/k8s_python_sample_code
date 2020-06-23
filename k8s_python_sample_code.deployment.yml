@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pythoncode3
+  namespace: python
+spec:
+  replicas: 1
+  template:
+   metadata:
+    labels:
+     k8s-app: k8s_python_sample_code
+   spec:
+    containers:
+    - name: pythoncode
+      image:  xxxuhong.azurecr.io/python:v2
+      imagePullPolicy: "IfNotPresent"
+      ports:
+      - containerPort: 5035
+      volumeMounts:
+      - mountPath: "/app-data"
+        name: volume
+    volumes:
+     - name: volume
+       persistentVolumeClaim:
+        claimName: azure-managed-disk

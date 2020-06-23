@@ -24,4 +24,4 @@ EXPOSE 5035
 VOLUME ["/app-data"]
 
 # Running Python Application
-CMD ["python", "app.py"]
+CMD ["python", "/k8s_python_sample_code/src/app/app.py"]
